@@ -1,0 +1,59 @@
+{
+  "name": "dsh-academic-writing",
+  "description": "学术写作与润色插件：内置论文写作流水线、分节写作指南、润色规则与自检清单，改编自 GitHub 开源 research paper writing skills（Master-cai/Research-Paper-Writing-Skills 与 SNL-UCSB/paper-writing-skill，MIT）。",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "license": "MIT",
+  "keywords": [
+    "deepseek",
+    "harness",
+    "dsh",
+    "dsh-plugin",
+    "academic-writing",
+    "paper",
+    "polish"
+  ],
+  "files": [
+    "lib",
+    "src",
+    "data",
+    "README.md",
+    "LICENSE",
+    "cordis.patch.yml"
+  ],
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test test/",
+    "check": "npm run typecheck && npm run build && npm test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.6.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    }
+  }
+}
